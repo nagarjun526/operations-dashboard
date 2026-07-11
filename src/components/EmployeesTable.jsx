@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
-function EmployeesTable() {
-    const [employees, setEmployees] = useState([]);
+function EmployeesTable({ employees, setEmployeesData }) {
     const [showForm, setShowForm] = useState(false);
 const [isEditing, setIsEditing] = useState(false);
 const [editingId, setEditingId] = useState(null);
@@ -12,16 +11,6 @@ const [newEmployee, setNewEmployee] = useState({
   department: "",
   role: "",
 });
-  useEffect(() => {
-    axios
-      .get("http://192.168.0.103:5001/employees")
-      .then((res) => {
-        setEmployees(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
 const handleSaveEmployee = async () => {
   try {
     const employeeToSave = {
@@ -32,11 +21,11 @@ const handleSaveEmployee = async () => {
 
     if (isEditing) {
       const response = await axios.put(
-        `http://192.168.0.103:5001/employees/${editingId}`,
+        `https://operations-dashboard-backend-4w0z.onrender.com/employees/${editingId}`,
         employeeToSave
       );
 
-      setEmployees(
+      setEmployeesData(
         employees.map((employee) =>
           employee._id === editingId ? response.data : employee
         )
@@ -46,11 +35,11 @@ const handleSaveEmployee = async () => {
       setEditingId(null);
     } else {
       const response = await axios.post(
-        "http://192.168.0.103:5001/employees",
+        "https://operations-dashboard-backend-4w0z.onrender.com/employees",
         employeeToSave
       );
 
-      setEmployees([...employees, response.data]);
+      setEmployeesData([...employees, response.data]);
     }
 
     setNewEmployee({
@@ -63,6 +52,20 @@ const handleSaveEmployee = async () => {
   } catch (err) {
     console.log(err);
     alert("Failed to save employee");
+  }
+};
+const handleDeleteEmployee = async (id) => {
+  try {
+    await axios.delete(
+      `https://operations-dashboard-backend-4w0z.onrender.com/employees/${id}`
+    );
+
+    setEmployeesData(
+      employees.filter((employee) => employee._id !== id)
+    );
+  } catch (err) {
+    console.log(err);
+    alert("Failed to delete employee");
   }
 };
   return (
@@ -137,18 +140,19 @@ const handleSaveEmployee = async () => {
     Edit
   </button>
 
-  <button
-    style={{
-      background: "#ef4444",
-      color: "white",
-      border: "none",
-      padding: "6px 12px",
-      borderRadius: "6px",
-      cursor: "pointer",
-    }}
-  >
-    Delete
-  </button>
+<button
+  onClick={() => handleDeleteEmployee(employee._id)}
+  style={{
+    background: "#ef4444",
+    color: "white",
+    border: "none",
+    padding: "6px 12px",
+    borderRadius: "6px",
+    cursor: "pointer",
+  }}
+>
+  Delete
+</button>
 </td>
             </tr>
           ))}

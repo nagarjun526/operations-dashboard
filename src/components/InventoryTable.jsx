@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
-function InventoryTable() {
-   const [inventory, setInventory] = useState([]);
+function InventoryTable({ inventory, setInventoryData }) {
+
    const [showForm, setShowForm] = useState(false);
    const [isEditing, setIsEditing] = useState(false);
 const [editingId, setEditingId] = useState(null);
@@ -12,18 +12,6 @@ const [newItem, setNewItem] = useState({
   price: "",
   status: "In Stock",
 });
-   useEffect(() => {
-  axios
-    .get("http://192.168.0.103:5001/inventory")
-    .then((res) => {
-      console.log(res.data);
-      setInventory(res.data);
-      console.log(Array.isArray(res.data));
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-}, []);
 const handleSaveInventory = async () => {
   try {
     const itemToSave = {
@@ -35,11 +23,11 @@ const handleSaveInventory = async () => {
 
     if (isEditing) {
       const response = await axios.put(
-        `http://192.168.0.103:5001/inventory/${editingId}`,
+        `https://operations-dashboard-backend-4w0z.onrender.com/inventory/${editingId}`,
         itemToSave
       );
 
-      setInventory(
+      setInventoryData(
         inventory.map((item) =>
           item._id === editingId ? response.data : item
         )
@@ -49,11 +37,11 @@ const handleSaveInventory = async () => {
       setEditingId(null);
     } else {
       const response = await axios.post(
-        "http://192.168.0.103:5001/inventory",
+        "https://operations-dashboard-backend-4w0z.onrender.com/inventory",
         itemToSave
       );
 
-      setInventory([...inventory, response.data]);
+      setInventoryData([...inventory, response.data]);
     }
 
     setNewItem({
@@ -71,9 +59,9 @@ const handleSaveInventory = async () => {
 };
 const handleDeleteInventory = async (id) => {
   try {
-    await axios.delete(`http://192.168.0.103:5001/inventory/${id}`);
+    await axios.delete(`https://operations-dashboard-backend-4w0z.onrender.com/inventory/${id}`);
 
-    setInventory(
+    setInventoryData(
       inventory.filter((item) => item._id !== id)
     );
   } catch (err) {
