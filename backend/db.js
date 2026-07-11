@@ -5,8 +5,9 @@ const connectDB = async () => {
     console.log("Connecting to MongoDB...");
     console.log("MONGODB_URI =", process.env.MONGODB_URI?.replace(/:(.*?@)/, ":********@"));
 
-await mongoose.connect(process.env.MONGODB_URI);
-
+    await mongoose.connect(process.env.MONGODB_URI, {
+  serverSelectionTimeoutMS: 10000,
+});
     console.log("✅ MongoDB Connected");
   } catch (err) {
     console.error("Full Error:");

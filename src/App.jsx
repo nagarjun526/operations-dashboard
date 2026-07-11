@@ -33,7 +33,7 @@ function App() {
     const [employeesData, setEmployeesData] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-    axios.get("http://192.168.0.103:5001/orders")
+    axios.get("https://operations-dashboard-backend-4w0z.onrender.com/orders")
    .then((response) => {
   console.log("API Response:", response.data);
   setOrdersData(response.data);
@@ -45,7 +45,7 @@ function App() {
 });
 }, []);
 useEffect(() => {
-   axios.get("http://192.168.0.103:5001/inventory")
+   axios.get("https://operations-dashboard-backend-4w0z.onrender.com/inventory")
     .then((response) => {
       setInventoryData(response.data);
     })
@@ -54,7 +54,7 @@ useEffect(() => {
     });
 }, []);
 useEffect(() => {
- axios.get("http://192.168.0.103:5001/employees")
+ axios.get("https://operations-dashboard-backend-4w0z.onrender.com/employees")
     .then((response) => {
       setEmployeesData(response.data);
     })
