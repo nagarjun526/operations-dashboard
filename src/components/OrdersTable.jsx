@@ -32,7 +32,7 @@ const handleSaveOrder = async () => {
 
     if (isEditing) {
       const response = await axios.put(
-        `http://localhost:5001/orders/${editingId}`,
+        `https://operations-dashboard-backend-4w0z.onrender.com/orders/${editingId}`,
         orderToSave
       );
 
@@ -46,7 +46,7 @@ const handleSaveOrder = async () => {
       setEditingId(null);
     } else {
       const response = await axios.post(
-        "http://localhost:5001/orders",
+        "https://operations-dashboard-backend-4w0z.onrender.com/orders",
         orderToSave
       );
 
@@ -75,7 +75,7 @@ const handleDelete = async (id) => {
   if (!confirmDelete) return;
 
   try {
-    await axios.delete(`http://192.168.0.103:5001/orders/${id}`);
+    await axios.delete(`https://operations-dashboard-backend-4w0z.onrender.com/orders/${id}`);
 
     setOrdersData(
       orders.filter((order) => order._id !== id)
