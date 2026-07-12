@@ -19,16 +19,19 @@ console.log("Orders received:", orders);
 
 const handleSaveOrder = async () => {
   try {
-    const orderToSave = {
-      orderId: isEditing
-        ? undefined
-        : Math.floor(1000 + Math.random() * 9000),
-      customer: newOrder.customer,
-      product: newOrder.product,
-      orderDate: newOrder.orderDate,
-      status: newOrder.status,
-      amount: Number(newOrder.amount),
-    };
+   const nextOrderId =
+  orders.length > 0
+    ? Math.max(...orders.map(order => Number(order.orderId))) + 1
+    : 1001;
+
+const orderToSave = {
+  orderId: isEditing ? undefined : nextOrderId,
+  customer: newOrder.customer,
+  product: newOrder.product,
+  orderDate: newOrder.orderDate,
+  status: newOrder.status,
+  amount: Number(newOrder.amount),
+};
 
     if (isEditing) {
       const response = await axios.put(
