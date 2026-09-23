@@ -119,7 +119,7 @@ function RecommendationSection({ orders, inventory = [], employees = [] }) {
           fontWeight: "700",
         }}
       >
-        🤖 AI Business Recommendations
+         Business Recommendations
       </h2>
 
       <AISummary orders={orders} />
