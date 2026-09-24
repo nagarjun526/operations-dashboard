@@ -1,15 +1,408 @@
+
+/* =========================================================
+   LIGHT / WHITE DASHBOARD DESIGN
+   This keeps your existing components and data.
+========================================================= */
+
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
+html,
 body {
-  background: #18181b;
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: #eef3f9 !important;
+  color: #172033 !important;
+  font-family: Inter, Arial, Helvetica, sans-serif !important;
 }
 
 #root {
   width: 100%;
   min-height: 100vh;
+  background: #eef3f9 !important;
+}
+
+/* Main application shell */
+#root > div {
+  width: 100%;
+  min-height: calc(100vh - 60px);
+  background: #eef3f9 !important;
+}
+
+/* Main content area beside sidebar */
+#root > div > div:last-child { 
+  min-width: 0; 
+  padding: 24px !important; 
+  background: #dfe7f1 !important;
+}
+
+/* ---------------------------------------------------------
+   HEADER
+--------------------------------------------------------- */
+
+#root > header {
+  min-height: 60px;
+  background: #2563eb !important;
+  color: #fff !important;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, .12);
+}
+
+#root > header h2 {
+  color: #fff !important;
+}
+
+#root > header div {
+  color: inherit;
+}
+
+/* ---------------------------------------------------------
+   SIDEBAR
+--------------------------------------------------------- */
+
+.sidebar {
+  width: 220px !important;
+  min-width: 220px !important;
+  min-height: calc(100vh - 60px) !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      #dbe5f1 0%,
+      #cbd7e5 100%
+    ) !important;
+
+  padding: 18px 14px !important;
+
+  border-right: 1px solid #b8c5d5;
+  box-shadow: 2px 0 12px rgba(15, 23, 42, .05);
+}
+
+.sidebar h2 {
+  color: #0f172a !important;
+}
+
+.sidebar li {
+  color: #172033 !important;
+  border-radius: 9px !important;
+}
+
+.sidebar li:hover,
+.sidebar li.active {
+  background: #2563eb !important;
+  color: #fff !important;
+}
+
+/* ---------------------------------------------------------
+   PAGE HEADINGS
+--------------------------------------------------------- */
+
+#root > div > div:last-child > h2 {
+  margin: 0 0 18px !important;
+
+  color: #0f172a !important;
+
+  font-size: 20px !important;
+  font-weight: 800 !important;
+}
+
+/* ---------------------------------------------------------
+   KPI CARDS
+--------------------------------------------------------- */
+
+.card {
+  width: 220px !important;
+  min-height: 120px;
+
+  padding: 18px !important;
+  margin: 7px !important;
+
+  border-radius: 14px !important;
+
+  box-shadow:
+    0 6px 20px rgba(15, 23, 42, .08) !important;
+
+  border: 1px solid rgba(255,255,255,.7);
+}
+
+.card:hover {
+  transform: translateY(-3px) !important;
+  box-shadow:
+    0 12px 28px rgba(15, 23, 42, .12) !important;
+}
+
+.card h3 {
+  margin-bottom: 10px !important;
+  color: #fff !important;
+  font-size: 13px !important;
+  font-weight: 750 !important;
+}
+
+.card h1 {
+  color: #fff !important;
+  font-size: 28px !important;
+  margin: 0 !important;
+}
+
+/* ---------------------------------------------------------
+   ORDERS SECTION
+--------------------------------------------------------- */
+
+.orders-container {
+  width: 100%;
+  margin-top: 22px !important;
+
+  padding: 18px;
+
+  background: #fff !important;
+
+  border: 1px solid #e1e8f0;
+  border-radius: 16px;
+
+  box-shadow:
+    0 6px 22px rgba(15, 23, 42, .055);
+}
+
+.orders-container h2 {
+  color: #0f172a !important;
+  font-size: 17px !important;
+  font-weight: 800 !important;
+}
+
+.search-box {
+  width: 280px !important;
+
+  padding: 10px 12px !important;
+  margin: 8px 0 12px !important;
+
+  background: #f8fafc !important;
+
+  border: 1px solid #d9e2ec !important;
+  border-radius: 9px !important;
+
+  color: #172033 !important;
+  font-size: 12px !important;
+
+  outline: none;
+}
+
+.search-box:focus {
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 3px rgba(37,99,235,.10);
+}
+
+.orders-container table {
+  width: 100% !important;
+
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+
+  overflow: hidden;
+
+  background: #fff !important;
+
+  border: 1px solid #e1e8f0;
+  border-radius: 10px;
+}
+
+.orders-container th {
+  padding: 10px !important;
+
+  background: #2563eb !important;
+  color: #fff !important;
+
+  border: 0 !important;
+
+  font-size: 11px !important;
+  font-weight: 800 !important;
+}
+
+.orders-container td {
+  padding: 9px !important;
+
+  background: #fff !important;
+  color: #334155 !important;
+
+  border: 0 !important;
+  border-bottom: 1px solid #edf1f5 !important;
+
+  font-size: 11px !important;
+  font-weight: 600 !important;
+}
+
+.orders-container tbody tr:nth-child(even) td {
+  background: #f8fafc !important;
+}
+
+.orders-container tbody tr:hover td {
+  background: #eff6ff !important;
+}
+
+.filter-buttons {
+  margin: 4px 0 13px !important;
+}
+
+.filter-buttons button {
+  padding: 7px 12px !important;
+  margin-right: 6px !important;
+
+  border: 0 !important;
+  border-radius: 7px !important;
+
+  background: #e8eef7 !important;
+  color: #334155 !important;
+
+  font-size: 10px !important;
+  font-weight: 700 !important;
+}
+
+.filter-buttons button:hover {
+  background: #2563eb !important;
+  color: #fff !important;
+}
+
+/* ---------------------------------------------------------
+   CHART ROW
+--------------------------------------------------------- */
+
+/* The chart components have inline widths.
+   These rules make them responsive and card-like. */
+
+#root > div > div:last-child > div[style*="display: flex"][style*="gap"] {
+  align-items: stretch;
+}
+
+#root > div > div:last-child > div[style*="display: flex"][style*="gap"] > div {
+  min-width: 0;
+}
+
+/* Sales chart */
+div[style*="width: 700px"][style*="height: 350px"] {
+  width: min(700px, 100%) !important;
+  height: 350px !important;
+
+  margin-top: 18px !important;
+  padding: 18px !important;
+
+  background: #fff !important;
+
+  border: 1px solid #e1e8f0;
+  border-radius: 16px !important;
+
+  box-shadow:
+    0 6px 22px rgba(15, 23, 42, .055);
+}
+
+div[style*="width: 700px"][style*="height: 350px"] h2 {
+  color: #0f172a !important;
+  font-size: 17px !important;
+  margin-bottom: 12px !important;
+}
+
+/* Order status chart */
+div[style*="width: 700px"][style*="padding: 20px"][style*="borderRadius: 20px"] {
+  width: min(700px, 100%) !important;
+
+  margin-top: 18px !important;
+  padding: 18px !important;
+
+  background: #fff !important;
+
+  border: 1px solid #e1e8f0;
+  border-radius: 16px !important;
+
+  box-shadow:
+    0 6px 22px rgba(15, 23, 42, .055);
+}
+
+div[style*="width: 700px"][style*="padding: 20px"][style*="borderRadius: 20px"] h2 {
+  color: #0f172a !important;
+  font-size: 17px !important;
+}
+
+/* ---------------------------------------------------------
+   ACTIVITY + NOTIFICATIONS
+--------------------------------------------------------- */
+
+#root > div > div:last-child > div[style*="flex: 2"] {
+  min-width: 0;
+}
+
+#root > div > div:last-child > div[style*="flex: 1"] {
+  min-width: 0;
+}
+
+/* White component cards */
+div[style*="background: white"][style*="padding: 20px"] {
+  border: 1px solid #e1e8f0 !important;
+  box-shadow:
+    0 6px 22px rgba(15, 23, 42, .05) !important;
+}
+
+div[style*="background: white"][style*="padding: 20px"] h2 {
+  color: #2563eb !important;
+}
+
+/* ---------------------------------------------------------
+   BUSINESS INSIGHTS / RECOMMENDATIONS
+--------------------------------------------------------- */
+
+#root > div > div:last-child > section,
+#root > div > div:last-child > article {
+  background: #fff;
+  border-radius: 15px;
+}
+
+/* ---------------------------------------------------------
+   FOOTER
+--------------------------------------------------------- */
+
+footer {
+  margin-top: 25px;
+  border-radius: 12px;
+}
+
+/* ---------------------------------------------------------
+   MOBILE
+--------------------------------------------------------- */
+
+@media (max-width: 1000px) {
+  #root > div > div:last-child {
+    padding: 18px !important;
+  }
+
+  .card {
+    width: calc(50% - 14px) !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .sidebar {
+    width: 190px !important;
+    min-width: 190px !important;
+  }
+
+  #root > div > div:last-child {
+    padding: 12px !important;
+  }
+
+  .card {
+    width: calc(100% - 14px) !important;
+  }
+
+  .search-box {
+    width: 100% !important;
+  }
+
+  #root > div > div:last-child > div[style*="display: flex"] {
+    flex-direction: column;
+  }
+
+  div[style*="width: 700px"][style*="height: 350px"],
+  div[style*="width: 700px"][style*="padding: 20px"][style*="borderRadius: 20px"] {
+    width: 100% !important;
+  }
 }

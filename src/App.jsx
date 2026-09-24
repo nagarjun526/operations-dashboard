@@ -22,7 +22,7 @@ import CustomersTable from "./components/CustomersTable";
 import Settings from "./components/Settings";
 import Profile from "./components/Profile";
 import GlobalSearch from "./components/GlobalSearch";
-
+import "./App.css";
 import Loading from "./components/Loading";
 function App() {
     const [page, setPage] = useState("Dashboard");
